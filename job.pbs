@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -N THEWIRE
+#PBS -j eo
+#PBS -q main
+#PBS -l nodes=28
+#PBS -l walltime=00:10:00
+
+#qsub -X -I -V -N THEWIRE -q debug -l nodes=28 -l walltime=00:30:00
+
+cd /s/chris/sim
+export OMP_NUM_THREADS=13
+
+mpirun -np 1 ./bin/conductor_mpi.exe
+
